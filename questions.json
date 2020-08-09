@@ -1,0 +1,116 @@
+{
+    "questions": [
+        {
+            "question": "Qui a trouvé un fusil ?",
+            "correctAnswers": [
+                { "text": "Skass" }
+            ],
+            "wrongAnswers": [
+                { "text": "Terracid" },
+                { "text": "SuperConeri" },
+                { "text": "Mkass" },
+                { "text": "Redus" },
+                { "text": "Potatoz" },
+                { "text": "Adhoc" },
+                { "text": "Squeezie" },
+                { "text": "Leffy" }
+            ]
+        },
+        {
+            "question": "Qui a créé la Cacabox ?",
+            "correctAnswers": [
+                { "text": "SalutCLucas" }
+            ],
+            "wrongAnswers": [
+                { "text": "Terracid" },
+                { "text": "Laink" },
+                { "text": "Tibro" },
+                { "text": "SuperConeri" },
+                { "text": "Leo-Paul" },
+                { "text": "Redus" },
+                { "text": "Flygow" },
+                { "text": "Ecrisio" },
+                { "text": "DeoToons" },
+                { "text": "Mouette" },
+                { "text": "Gabinks" },
+                { "text": "Remli" },
+                { "text": "Theorus" },
+                { "text": "Snaptrox" },
+                { "text": "Potatoz" },
+                { "text": "Grimkujow" },
+                { "text": "Adhoc" },
+                { "text": "Squeezie" },
+                { "text": "Leffy" }
+            ]
+        },
+        {
+            "question": "Comment Snaptrox appelle-t-il les membres de sa communauté ?",
+            "correctAnswers": [
+                { "text": "Les Snaptroxiens" }
+            ],
+            "wrongAnswers": [
+                { "text": "Les Snaptrox Fans" },
+                { "text": "La miff" },
+                { "text": "Les potos" },
+                { "text": "Les gros" },
+                { "text": "Les Snapous" },
+                { "text": "Les Snapotes" },
+                { "text": "Les Lardons" }
+            ]
+        },
+        {
+            "question": "Qui a chié devant Gemini Man ?",
+            "correctAnswers": [
+                { "text": "Theorus" }
+            ],
+            "wrongAnswers": [
+                { "text": "Terracid" },
+                { "text": "Tibro" },
+                { "text": "SuperConeri" },
+                { "text": "Leo-Paul" },
+                { "text": "Redus" },
+                { "text": "Flygow" },
+                { "text": "Ecrisio" },
+                { "text": "DeoToons" },
+                { "text": "Mouette" },
+                { "text": "Gabinks" },
+                { "text": "Remli" },
+                { "text": "Snaptrox" },
+                { "text": "Potatoz" },
+                { "text": "Grimkujow" },
+                { "text": "Adhoc" },
+                { "text": "Mkass" },
+                { "text": "Ayako" },
+                { "text": "Leffy" },
+                { "text": "Nazlock" }
+            ]
+        },
+        {
+            "question": "Qui s'est fait clasher par Les Produits Laitiers sur Twitter ?",
+            "correctAnswers": [
+                { "text": "Grimkujow" },
+                { "text": "Remli" }
+            ],
+            "wrongAnswers": [
+                { "text": "Terracid" },
+                { "text": "Theorus" },
+                { "text": "Tibro" },
+                { "text": "SuperConeri" },
+                { "text": "Leo-Paul" },
+                { "text": "Redus" },
+                { "text": "Flygow" },
+                { "text": "Ecrisio" },
+                { "text": "DeoToons" },
+                { "text": "Mouette" },
+                { "text": "Gabinks" },
+                { "text": "Snaptrox" },
+                { "text": "Potatoz" },
+                { "text": "Adhoc" },
+                { "text": "Mkass" },
+                { "text": "Ayako" },
+                { "text": "Leffy" },
+                { "text": "Nazlock" }
+            ]
+        }
+    ]
+}

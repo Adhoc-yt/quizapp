@@ -1,0 +1,49 @@
+<!--
+  Duo: 1pt
+  Carre: 3pts
+  Cash: 5pts
+-->  
+
+
+<!DOCTYPE html>
+<html lang="FR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="style.css" rel="stylesheet">
+  <script defer src="script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <title>Quiz App</title>
+</head>
+<body onclick="snd_click.play();">
+  <audio loop id="player" volume="0.3" autoplay=1>
+    <source src="snd/bg.mp3" type="audio/mpeg">
+    Oops, pas de musique parce que ce navigateur internet pue du cul.
+  </audio>
+  <div id="toggleMusic" onclick="$('.snd-ctrl').toggle(); document.getElementById('player').muted=!document.getElementById('player').muted">
+    <img class="snd-ctrl" width=20px src="./music_stop.png" alt="Mute" />
+    <img class="snd-ctrl" style="display:none;" width=20px src="./music.png" alt="Unmute" />
+  </div>
+  <div class="container">
+    <div id="question-container" class="hide">
+      <div id="timer"></div>
+      <div id="question">Question</div>
+      
+      <div id="display-buttons" class="btn-select">
+        <button class="btn" id="btn-duo" onclick="displayAnswers('duo');">Duo</button>
+        <button class="btn" id="btn-carre" onclick="displayAnswers('carre');">Carré</button>
+        <button class="btn" id="btn-cash" onclick="displayAnswers('cash');">Cash</button>
+      </div>
+
+      <div id="answers" class="btn-grid hidden">
+      </div>
+
+    </div>
+    <div class="controls">
+      <button id="start-btn" class="start-btn btn">C'est parti !</button>
+      <button id="next-btn" class="next-btn btn hide" onclick="$('#timer').hide(250);">Question suivante</button>
+    </div>
+  </div>
+</body>
+</html>
