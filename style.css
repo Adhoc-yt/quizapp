@@ -1,15 +1,32 @@
 *, *::before, *::after {
     box-sizing: border-box;
-    font-family: 'Comic Sans MS';
+    font-family: 'Magic-Dreams';
+  }
+
+  @font-face {
+    font-family: 'Magic-Dreams';
+    src: url('assets/Magic-Dreams.woff') format('woff');
   }
   
+  @font-face {
+    font-family: 'Bowlby-One';
+    src: url('assets/BowlbyOne-Regular.woff') format('woff');
+  }
+
   :root {
-    --hue-neutral: 200;
+    --hue-neutral: 41;
     --hue-wrong: 0;
     --hue-correct: 145;
-    --hue-container: 60;
   }
   
+  #backgroundVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
   body {
     --hue: var(--hue-neutral);
     padding: 0;
@@ -19,11 +36,6 @@
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: hsl(var(--hue), 100%, 20%);
-    border: solid 2px #fff;
-    box-shadow:
-        inset 60px 0 120px #f0f,  /* left magenta */
-        inset -60px 0 120px #0ff; /* right cyan */
   }
   
   body.correct {
@@ -32,15 +44,6 @@
   
   body.wrong {
     --hue: var(--hue-wrong);
-  }
-  
-  #toggleMusic {
-    position:absolute;
-    background-color: aliceblue;
-    border-radius: 25%;
-    padding:5px;
-    left:10px;
-    top:10px;
   }
 
   #timer {
@@ -67,16 +70,80 @@
     animation: swingHard 1s infinite ease-in-out;
   }
 
+  #bandeau {
+    border: 20px solid white;
+    position: absolute;
+    width: 95%;
+    height: 95%;
+  }
+
+  #bandeau-top {
+    position: absolute;
+    width: 100%;
+    top: -20px;
+    left: -20px;
+  }
+
+  span {
+    font-family: 'Bowlby-One';
+    font-size: 10px;
+  }
+  
+  #bandeau-bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    left: -20px;
+  }
+
+  .marquee {
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+  }
+  
+  .marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 25s linear infinite;
+  }
+  
+  .marquee2 span {
+    animation-delay: 12.5s;
+  }
+
+  .marquee3 {
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+  }
+  
+  .marquee3 span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 25s linear infinite reverse;
+  }
+  
+  .marquee4 span {
+    animation-delay: 12.5s;
+  }
+  
+
   .container {
     --hue: var(--hue-container);
     width: 800px;
     max-width: 80%;
     min-height: 30%;
-    background-color: hsl(var(--hue), 100%, 70%);
-    border-radius: 5px;
+    background-color: #ffea00;
+    border-radius: 15px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
     animation: swing 3s infinite ease-in-out;
+    -webkit-box-shadow: 10px 10px 0px 0px rgba(0,0,0,0.50);
+    -moz-box-shadow: 10px 10px 0px 0px rgba(0,0,0,0.50);
+    box-shadow: 10px 10px 0px 0px rgba(0,0,0,0.50);
   }
   
   .btn-grid {
@@ -98,6 +165,8 @@
     background-color: white;
     padding: 10px 0px;
     border-radius: 25px;
+    /* animation question radeon */
+    border: 4px solid black;
   }
     
   .btn-select {
@@ -109,18 +178,19 @@
   
   .btn {
     --hue: var(--hue-neutral);
-    border: 5px solid hsl(var(--hue), 100%, 30%);
+    border: 3px solid white;
     background-color: hsl(var(--hue), 100%, 50%);
     border-radius: 5px;
     padding: 5px 10px;
     color: white;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.75);
     outline: none;
     font-size: large;
-    /* Animation
-    transition: transform .2s;
-    animation: shake 0.82s infinite ease-in-out; */
     animation: swing 0.6s infinite ease-in-out;
     font-weight: bold;
+    -webkit-box-shadow: 4px 4px 2px 0px rgba(0,0,0,0.50);
+    -moz-box-shadow: 4px 4px 2px 0px rgba(0,0,0,0.50);
+    box-shadow: 4px 4px 2px 0px rgba(0,0,0,0.50);
   }
 
   .reponse {
@@ -206,4 +276,13 @@
       transform: translatey(-10px); }
     100% { box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
       transform: translatey(0px); }
+  }
+
+  @keyframes radeon {
+    0% { box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6); }
+  }
+
+  @keyframes marquee {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
   }

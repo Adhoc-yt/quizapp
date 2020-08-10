@@ -2,6 +2,17 @@
   Duo: 1pt
   Carre: 3pts
   Cash: 5pts
+
+  Toutes les 3 questions:
+  1 frame candidat entre les questions
+  Candidat avec image, pseudo, 
+
+
+  A la fin Tableau des scores trie (le premier a une petite couronne
+  et le dernier un caca)
+  TODO
+  Afficher vraie reponse apres validation de CASH
+
 -->  
 
 
@@ -17,13 +28,26 @@
   <title>Quiz App</title>
 </head>
 <body onclick="snd_click.play();">
-  <audio loop id="player" volume="0.3" autoplay=1>
-    <source src="snd/bg.mp3" type="audio/mpeg">
-    Oops, pas de musique parce que ce navigateur internet pue du cul.
-  </audio>
-  <div id="toggleMusic" onclick="$('.snd-ctrl').toggle(); document.getElementById('player').muted=!document.getElementById('player').muted">
-    <img class="snd-ctrl" width=20px src="./music_stop.png" alt="Mute" />
-    <img class="snd-ctrl" style="display:none;" width=20px src="./music.png" alt="Unmute" />
+  <video autoplay muted loop id="backgroundVideo">
+    <source src="assets/fond.mp4" type="video/mp4">
+  </video>
+  <div id="bandeau">
+    <div id="bandeau-top">
+      <p class="marquee">
+        <span>CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX -&nbsp;</span>
+      </p>
+      <p class="marquee marquee2">
+        <span>CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX -&nbsp;</span>
+      </p>
+  </div>
+  <div id="bandeau-bottom">
+    <p class="marquee3">
+      <span>CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX -&nbsp;</span>
+    </p>
+    <p class="marquee3 marquee4">
+      <span>CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX - CACABOX -&nbsp;</span>
+    </p>
+  </div>
   </div>
   <div class="container">
     <div id="question-container" class="hide">

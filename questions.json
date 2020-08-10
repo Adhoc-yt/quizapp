@@ -8,7 +8,6 @@
             "wrongAnswers": [
                 { "text": "Terracid" },
                 { "text": "SuperConeri" },
-                { "text": "Mkass" },
                 { "text": "Redus" },
                 { "text": "Potatoz" },
                 { "text": "Adhoc" },
@@ -17,15 +16,14 @@
             ]
         },
         {
-            "question": "Qui a créé la Cacabox ?",
+            "question": "D'apres Sardoche, qui est le maitre des harceleurs ?",
             "correctAnswers": [
-                { "text": "SalutCLucas" }
+                { "text": "SuperConeri" }
             ],
             "wrongAnswers": [
                 { "text": "Terracid" },
                 { "text": "Laink" },
                 { "text": "Tibro" },
-                { "text": "SuperConeri" },
                 { "text": "Leo-Paul" },
                 { "text": "Redus" },
                 { "text": "Flygow" },
@@ -79,7 +77,6 @@
                 { "text": "Potatoz" },
                 { "text": "Grimkujow" },
                 { "text": "Adhoc" },
-                { "text": "Mkass" },
                 { "text": "Ayako" },
                 { "text": "Leffy" },
                 { "text": "Nazlock" }
@@ -106,7 +103,6 @@
                 { "text": "Snaptrox" },
                 { "text": "Potatoz" },
                 { "text": "Adhoc" },
-                { "text": "Mkass" },
                 { "text": "Ayako" },
                 { "text": "Leffy" },
                 { "text": "Nazlock" }
