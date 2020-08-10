@@ -17,6 +17,8 @@ var snd_wrong = new Audio("snd/incorrect.mp3");
 
 var timerIsRunning = false;
 var timerTime = 10;
+var correctAnswer = "";
+var fullCorrectAnswer = "";
 
 let shuffledQuestions, currentQuestionIndex
 
@@ -106,6 +108,13 @@ function showQuestion(question) {
   //Push a random correct answer
   correctAnswer = question.correctAnswers[Math.floor(Math.random()*question.correctAnswers.length)];
   answersArray.push(correctAnswer)
+  //If we have several correct answers, we need them all for Cash
+  if (question.correctAnswers.length > 1){
+    fullCorrectAnswer = question.correctAnswers[0].text;
+    for (i = 1; i < question.correctAnswers.length; ++i){
+      fullCorrectAnswer += " // " + question.correctAnswers[i].text;
+    }
+  }
   //Shuffle wrong answers, then pick 3 at a random index
   shuffledWrongAnswers = question.wrongAnswers.sort(() => Math.random() - .5)
   randomIndex = Math.floor(Math.random()*question.wrongAnswers.length)
@@ -133,32 +142,20 @@ function displayAnswers(duoCarreCash) {
   $('#display-buttons').hide();
   switch(duoCarreCash) {
     case "duo":
-      /*
-        Supprimer 2 reponses sauf si dataset correct
-      */
+      //  Supprimer 2 reponses sauf si dataset correct
       $('.volatile').sort(() => Math.random() - Math.random()).slice(0, 2).remove()
-      
       break;
     case "carre":
-      /*
-        ne rien faire // afficher normal
-      */
+      //ne rien faire, afficher normal
       break;
     case "cash":
       $('#answers').empty();
-      const valider = document.createElement('button')
-      const refuser = document.createElement('button')
-      valider.innerText = "Valider"
-      refuser.innerText = "Refuser"
-      valider.classList.add('btn')
-      valider.classList.add('reponse')
-      refuser.classList.add('btn')
-      refuser.classList.add('reponse')
-      valider.dataset.correct = "correct"
-      valider.addEventListener('click', selectAnswer)
-      refuser.addEventListener('click', selectAnswer)
-      answersElement.appendChild(valider)
-      answersElement.appendChild(refuser)
+      const voirReponse = document.createElement('button')
+      voirReponse.innerText = "Voir la réponse"
+      voirReponse.classList.add('btn')
+      voirReponse.classList.add('reponse')
+      voirReponse.addEventListener('click', validation)
+      answersElement.appendChild(voirReponse)
       break;
     default:
       alert("erreur condition Duo/Carre/Cash");
@@ -176,6 +173,43 @@ function displayAnswers(duoCarreCash) {
     var delay = $(this).index();
     $(this).css('fadein', delay + 's');
   });
+}
+
+function afficherReponse() {
+  const reponse = document.createElement('div')
+  reponse.classList.add('reponse')
+  reponse.classList.add('cash')
+  if (fullCorrectAnswer === ""){
+    reponse.innerText = correctAnswer.text;
+  } else {
+    reponse.innerText = fullCorrectAnswer;
+    fullCorrectAnswer = "";
+  }
+  questionElement.appendChild(reponse)
+}
+
+function validation() {
+  $('#answers').empty();
+
+  snd_countdown.pause();
+  $('#timer').hide(250);
+  timerIsRunning = false
+  
+  afficherReponse();
+
+  const valider = document.createElement('button')
+  const refuser = document.createElement('button')
+  valider.innerText = "Valider"
+  refuser.innerText = "Refuser"
+  valider.classList.add('btn')
+  valider.classList.add('reponse')
+  refuser.classList.add('btn')
+  refuser.classList.add('reponse')
+  valider.dataset.correct = "correct"
+  valider.addEventListener('click', selectAnswer)
+  refuser.addEventListener('click', selectAnswer)
+  answersElement.appendChild(valider)
+  answersElement.appendChild(refuser)
 }
 
 function startTimer(duration) {
@@ -209,3 +243,8 @@ function timeUp() {
     startButton.classList.remove('hide')
   }
 }
+
+$( document ).ready(function() {
+  n = 17;
+  for (i=0; i<n; ++i){ $('.scrolling').append("CACABOX - "); }
+});

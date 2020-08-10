@@ -4,6 +4,7 @@
   }
 
   @font-face {
+    letter-spacing: 0.5em;
     font-family: 'Magic-Dreams';
     src: url('assets/Magic-Dreams.woff') format('woff');
   }
@@ -77,59 +78,34 @@
     height: 95%;
   }
 
-  #bandeau-top {
-    position: absolute;
-    width: 100%;
-    top: -20px;
-    left: -20px;
-  }
-
-  span {
+  .scrolling {
     font-family: 'Bowlby-One';
     font-size: 10px;
+    
+    animation: marquee 25s linear infinite;
+    display: inline-block;
   }
   
+  .reverse {
+    animation-direction: reverse;
+  }
+
+  #bandeau-top {
+    position: absolute;
+    height: 0%;
+    white-space: nowrap;
+    position: absolute;
+    top: -20px;
+  }
+
   #bandeau-bottom {
     position: absolute;
-    width: 100%;
+    width: 30%;
+    height: 0%;
+    white-space: nowrap;
+    position: absolute;
     bottom: 0px;
-    left: -20px;
   }
-
-  .marquee {
-    margin: 0 auto;
-    white-space: nowrap;
-    overflow: hidden;
-    position: absolute;
-  }
-  
-  .marquee span {
-    display: inline-block;
-    padding-left: 100%;
-    animation: marquee 25s linear infinite;
-  }
-  
-  .marquee2 span {
-    animation-delay: 12.5s;
-  }
-
-  .marquee3 {
-    margin: 0 auto;
-    white-space: nowrap;
-    overflow: hidden;
-    position: absolute;
-  }
-  
-  .marquee3 span {
-    display: inline-block;
-    padding-left: 100%;
-    animation: marquee 25s linear infinite reverse;
-  }
-  
-  .marquee4 span {
-    animation-delay: 12.5s;
-  }
-  
 
   .container {
     --hue: var(--hue-container);
@@ -194,8 +170,14 @@
   }
 
   .reponse {
-    height: 120px;
-    width: 300px;
+    height: 8vh;
+    width: 35vw;
+    font-weight: normal;
+    font-size: x-large;
+  }
+
+  .cash {
+    height: 4vh;
   }
   
   .btn:hover {
@@ -206,7 +188,7 @@
   
   .btn.correct {
     --hue: var(--hue-correct);
-    color: black;
+    color: yellow;
   }
   
   .btn.wrong {
@@ -214,7 +196,7 @@
   }
   
   .start-btn, .next-btn {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     padding: 10px 20px;
   }
@@ -283,6 +265,6 @@
   }
 
   @keyframes marquee {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(-100%, 0); }
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
   }

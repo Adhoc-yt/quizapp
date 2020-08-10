@@ -16,6 +16,18 @@
             ]
         },
         {
+            "question": "Combien y a-t-il de cailles chez Adhoc ?",
+            "correctAnswers": [
+                { "text": "Entre 70 et 80" }
+            ],
+            "wrongAnswers": [
+                { "text": "Entre 100 et 110" },
+                { "text": "Entre 50 et 60" },
+                { "text": "Entre 90 et 100" },
+                { "text": "Entre 120 et 130" }
+            ]
+        },
+        {
             "question": "D'apres Sardoche, qui est le maitre des harceleurs ?",
             "correctAnswers": [
                 { "text": "SuperConeri" }
