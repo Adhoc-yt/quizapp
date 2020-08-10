@@ -107,6 +107,7 @@
   }
 
   .container {
+    margin-top: -10%;
     z-index: 2;
     --hue: var(--hue-container);
     width: 800px;

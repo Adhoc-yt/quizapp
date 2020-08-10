@@ -9,6 +9,7 @@ const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answersElement = document.getElementById('answers')
 const timerElement = document.getElementById('timer')
+const joueursElement = document.getElementById('joueurs')
 
 var snd_click = new Audio("snd/click.mp3");
 var snd_countdown = new Audio("snd/countdown.mp3");
@@ -19,6 +20,7 @@ var timerIsRunning = false;
 var timerTime = 10;
 var correctAnswer = "";
 var fullCorrectAnswer = "";
+var selectedJoueur = -1;
 
 var pointsAtStake = 0;
 
@@ -31,6 +33,7 @@ nextButton.addEventListener('click', () => {
 })
 
 function startGame() {
+  selectedJoueur = joueurs.length - 1;
   startButton.classList.add('hide')
   shuffledQuestions = questions.sort(() => Math.random() - .5)
   currentQuestionIndex = 0
@@ -39,7 +42,7 @@ function startGame() {
 }
 
 function setNextQuestion() {
-  resetState()
+  resetState();
   showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
@@ -70,6 +73,7 @@ function selectAnswer(e) {
 function playSound(correct) {
   if (correct) {
     snd_correct.play();
+    addPoints(pointsAtStake);
   } else {
     snd_wrong.play();
   }
@@ -96,6 +100,7 @@ function clearBackgroundStatusClass(element) {
 
 /* post-condition: returns an randomized array of 4 answers with 1 unique correct answer */
 function showQuestion(question) {
+  selectNextJoueur();
   fullCorrectAnswer = "";
   questionElement.innerText = question.question
   $('#answers').css('display', 'none');
@@ -241,14 +246,56 @@ function timeUp() {
   }
 }
 
-$( document ).ready(function() {
+function showPlayers() {
+  console.log(joueurs);
+  joueurs.forEach(joueurObj => {
+    const joueur = document.createElement('div')
+    joueur.classList.add('joueur')
+    
+    const score = document.createElement('div')
+    score.classList.add('score')
+    score.innerText = joueurObj.score;
+
+    const avatar = document.createElement('div')
+    avatar.innerHTML = "<img width=\"69px\" src=\"" + joueurObj.avatar + "\" />";
+    avatar.classList.add('avatar')
+    
+    joueur.appendChild(score)
+    joueur.appendChild(avatar)
+    joueur.innerHTML += joueurObj.nom
+    joueursElement.appendChild(joueur)
+  })
+}
+
+function selectNextJoueur() {
+  $('#joueurs').children().eq(selectedJoueur).removeClass('selected');
+  selectedJoueur = (selectedJoueur + 1) % joueurs.length;
+  $('#joueurs').children().eq(selectedJoueur).addClass('selected');
+}
+
+function addPoints(pts) {
+  newScore = parseInt($('.score').eq(selectedJoueur).text()) + parseInt(pts);
+  $('.score').eq(selectedJoueur).text(newScore)
+}
+
+
+$(document).ready(function() {
   n = 17;
   for (i=0; i<n; ++i){ $('.scrolling').append("CACABOX - "); }
-});
 
-// chargement questions
-questions = [];
-fetch("questions.json").then((resp) => resp.json())
-.then(function(data) {
-  questions = data["questions"];
+  // chargement questions
+  questions = [];
+  fetch("questions.json").then((resp) => resp.json())
+  .then(function(data) {
+    questions = data["questions"];
+  });
+
+  // chargement joueurs
+  joueurs = [];
+  fetch("joueurs.json").then((resp) => resp.json())
+  .then(function(data) {
+    joueurs = data["joueurs"];
+    showPlayers();
+  });
+
 });
