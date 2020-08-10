@@ -94,13 +94,6 @@ function clearBackgroundStatusClass(element) {
   element.classList.remove('wrong')
 }
 
-// chargement questions
-questions = [];
-fetch("questions.json").then((resp) => resp.json())
-.then(function(data) {
-  questions = data["questions"];
-});
-
 /* post-condition: returns an randomized array of 4 answers with 1 unique correct answer */
 function showQuestion(question) {
   fullCorrectAnswer = "";
@@ -251,4 +244,11 @@ function timeUp() {
 $( document ).ready(function() {
   n = 17;
   for (i=0; i<n; ++i){ $('.scrolling').append("CACABOX - "); }
+});
+
+// chargement questions
+questions = [];
+fetch("questions.json").then((resp) => resp.json())
+.then(function(data) {
+  questions = data["questions"];
 });
