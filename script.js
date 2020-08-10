@@ -20,6 +20,8 @@ var timerTime = 10;
 var correctAnswer = "";
 var fullCorrectAnswer = "";
 
+var pointsAtStake = 0;
+
 let shuffledQuestions, currentQuestionIndex
 
 startButton.addEventListener('click', startGame)
@@ -145,9 +147,10 @@ function displayAnswers(duoCarreCash) {
     case "duo":
       //  Supprimer 2 reponses sauf si dataset correct
       $('.volatile').sort(() => Math.random() - Math.random()).slice(0, 2).remove()
+      pointsAtStake = 1;
       break;
     case "carre":
-      //ne rien faire, afficher normal
+      pointsAtStake = 3;
       break;
     case "cash":
       $('#answers').empty();
@@ -157,6 +160,7 @@ function displayAnswers(duoCarreCash) {
       voirReponse.classList.add('reponse')
       voirReponse.addEventListener('click', validation)
       answersElement.appendChild(voirReponse)
+      pointsAtStake = 5;
       break;
     default:
       alert("erreur condition Duo/Carre/Cash");

@@ -37,6 +37,8 @@
     height: 100vh;
     justify-content: center;
     align-items: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
   }
   
   body.correct {
@@ -49,14 +51,14 @@
 
   #timer {
     display: none;
-    z-index: 2;
+    z-index: 5;
     position:absolute;
     width: 100px;
     height: 100px;
     background-image: url("assets/timer.gif");
     border-radius: 25%;
     padding:5px;
-    padding-top:40px;
+    padding-top:45px;
     right:-10%;
     top:-30%;
     text-align: center;
@@ -105,6 +107,7 @@
   }
 
   .container {
+    z-index: 2;
     --hue: var(--hue-container);
     width: 800px;
     max-width: 80%;
@@ -169,6 +172,7 @@
   .reponse {
     height: 10vh;
     width: 35vw;
+    max-width: 350px;
     font-weight: normal;
     font-size: x-large;
   }
@@ -206,6 +210,40 @@
   
   .hide {
     display: none;
+  }
+
+  #joueurs {
+    z-index: 1;
+    position: absolute;
+    bottom: 5%;
+    text-align: center;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.75);
+  }
+
+  .selected {
+    border: 3px solid white;
+    border-radius: 3px;
+    padding: 10px;
+  }
+
+  .joueur {
+    float: left;
+    margin-right: 10px;
+    color:white;
+  }
+
+  .score {
+    font-family: 'Bowlby-One';
+    font-size: xx-large;
+    color:white;
+  }
+
+  .avatar {
+    width: 75px;
+    height: 75px;
+    border: 3px solid white;
+    border-radius: 3px;
+    margin-bottom: 10px;
   }
 
   @keyframes swing {

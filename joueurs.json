@@ -1,0 +1,29 @@
+{
+    "joueurs": [
+        {
+            "nom": "Potatoz",
+            "avatar": "assets/joueurs/pota.png",
+            "score": 0
+        },
+        {
+            "nom": "SuperConeri",
+            "avatar": "assets/joueurs/supercon.png",
+            "score": 0
+        },
+        {
+            "nom": "Terracid",
+            "avatar": "assets/joueurs/terra.png",
+            "score": 0
+        },
+        {
+            "nom": "Ecrisio",
+            "avatar": "assets/joueurs/ecri.png",
+            "score": 0
+        },
+        {
+            "nom": "Adhoc",
+            "avatar": "assets/joueurs/adhoc.png",
+            "score": 0
+        }
+    ]
+}
