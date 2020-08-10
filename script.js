@@ -101,6 +101,7 @@ fetch("questions.json").then((resp) => resp.json())
 
 /* post-condition: returns an randomized array of 4 answers with 1 unique correct answer */
 function showQuestion(question) {
+  fullCorrectAnswer = "";
   questionElement.innerText = question.question
   $('#answers').css('display', 'none');
   $('#display-buttons').show(250);
@@ -183,7 +184,6 @@ function afficherReponse() {
     reponse.innerText = correctAnswer.text;
   } else {
     reponse.innerText = fullCorrectAnswer;
-    fullCorrectAnswer = "";
   }
   questionElement.appendChild(reponse)
 }
