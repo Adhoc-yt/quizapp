@@ -17,6 +17,7 @@ var snd_correct = new Audio("snd/correct.mp3");
 var snd_wrong = new Audio("snd/incorrect.mp3");
 
 var timerIsRunning = false;
+var roundIsActive = false;
 var timerTime = 10;
 var correctAnswer = "";
 var fullCorrectAnswer = "";
@@ -28,6 +29,7 @@ let shuffledQuestions, currentQuestionIndex
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
+  roundIsActive = true;
   currentQuestionIndex++
   setNextQuestion()
 })
@@ -58,7 +60,9 @@ function selectAnswer(e) {
   const selectedButton = e.target
   const isCorrect = selectedButton.dataset.correct
   setBackgroundStatusClass(document.body, isCorrect)
-  playSound(isCorrect);
+  if (roundIsActive){
+    manageSoundAndPoints(isCorrect);
+  }
   Array.from(answersElement.children).forEach(button => {
     setBackgroundStatusClass(button, button.dataset.correct)
   })
@@ -70,13 +74,14 @@ function selectAnswer(e) {
   }
 }
 
-function playSound(correct) {
+function manageSoundAndPoints(correct) {
   if (correct) {
     snd_correct.play();
     addPoints(pointsAtStake);
   } else {
     snd_wrong.play();
   }
+  roundIsActive = false;
 }
 
 function setBackgroundStatusClass(element, correct) {
@@ -232,6 +237,7 @@ function startTimer(duration) {
 
 function timeUp() {
   timerIsRunning = false;
+  roundIsActive = false;
   $('#timer').css("animation", "shake 2s infinite ease-in-out;");
   setBackgroundStatusClass(document.body, false)
   snd_wrong.play();
