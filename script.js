@@ -35,6 +35,7 @@ nextButton.addEventListener('click', () => {
 })
 
 function startGame() {
+  roundIsActive = true;
   selectedJoueur = joueurs.length - 1;
   startButton.classList.add('hide')
   shuffledQuestions = questions.sort(() => Math.random() - .5)
@@ -253,7 +254,6 @@ function timeUp() {
 }
 
 function showPlayers() {
-  console.log(joueurs);
   joueurs.forEach(joueurObj => {
     const joueur = document.createElement('div')
     joueur.classList.add('joueur')
