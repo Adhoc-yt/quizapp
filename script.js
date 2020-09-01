@@ -1,6 +1,6 @@
 /* Ameliorations possibles:
 - Panneau d'admin pour ajouter des questions 
-  + validation (au moins 1 bonne reponse et 3 mnauvaises par question)
+  + validation (au moins 1 bonne reponse et 3 mauvaises par question)
   + possibilite de repondre cash
 */
 const startButton = document.getElementById('start-btn')
@@ -67,12 +67,27 @@ function selectAnswer(e) {
   Array.from(answersElement.children).forEach(button => {
     setBackgroundStatusClass(button, button.dataset.correct)
   })
-  if (shuffledQuestions.length > currentQuestionIndex + 1) {
-    nextButton.classList.remove('hide')
-  } else {
-    startButton.innerText = 'Fin des questions'
-    startButton.classList.remove('hide')
-  }
+  questionSuivante()
+}
+
+function endGame() {
+  $('#joueurs').fadeOut()
+  $('.container').fadeOut()
+  setTimeout(function(){
+    $('.selected').removeClass('selected')
+    trierJoueurs()
+    $('#joueurs').addClass('container')
+    $('#joueurs').css('position', 'relative').fadeIn(250)
+  }, 500);
+}
+
+function trierJoueurs() {
+  var items = $('#joueurs').children("div").sort(function(a, b) {
+      var vA = $("div.score", a).text();
+      var vB = $("div.score", b).text();
+      return (vA > vB) ? -1 : (vA < vB) ? 1 : 0;
+  });
+  $('#joueurs').append(items);
 }
 
 function manageSoundAndPoints(correct) {
@@ -245,10 +260,15 @@ function timeUp() {
   Array.from(answersElement.children).forEach(button => {
     setBackgroundStatusClass(button, button.dataset.correct)
   })
+
+}
+
+function questionSuivante() {
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove('hide')
   } else {
-    startButton.innerText = 'Fin des questions'
+    startButton.innerText = 'Voir les resultats'
+    startButton.addEventListener('click', endGame)
     startButton.classList.remove('hide')
   }
 }
